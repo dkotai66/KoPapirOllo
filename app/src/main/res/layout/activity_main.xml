@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/layoutegy">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rock"
+            android:id="@+id/rock"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tevalasztasod"
+        android:layout_below="@id/layoutegy"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:text="A te választásod"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/tevalasztasod"
+        android:id="@+id/layoutketto">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rock"
+            android:id="@+id/rock_ketto"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gepvalasztasa"
+        android:layout_below="@id/layoutketto"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:text="A gép választása"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/eredmeny"
+        android:layout_below="@id/gepvalasztasa">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eredmény "
+            android:textSize="20dp"
+            android:id="@+id/eredmenyText"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ember: 0 "
+            android:textSize="20dp"
+            android:id="@+id/emberEredmeny"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Computer: 0 "
+            android:textSize="20dp"
+            android:id="@+id/gepEredmeny"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eredmeny"
+        android:gravity="center"
+        android:id="@+id/gombok"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kő"
+            android:layout_marginRight="20dp"
+            android:id="@+id/koGomb"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="papír"
+            android:layout_marginRight="20dp"
+            android:id="@+id/papirGomb"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Olló"
+            android:id="@+id/olloGomb"/>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
+
+
+
