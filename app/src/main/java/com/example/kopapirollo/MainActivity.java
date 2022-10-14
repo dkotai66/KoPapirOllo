@@ -1,7 +1,9 @@
 package com.example.kopapirollo;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,12 +20,14 @@ public class MainActivity extends AppCompatActivity {
     private Toast toast;
     private int ember, gep;
     private ImageView rock, rock_ketto;
+    private AlertDialog.Builder  jatekEredmeny;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+
 
         koGomb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,15 +40,16 @@ public class MainActivity extends AppCompatActivity {
                 else if(gepValasztas()==1){
                     rock_ketto.setImageResource(R.drawable.paper);
                     gep++;
-                    gepEredmeny.setText("Computer: "+String.valueOf(gepEredmeny));
+                    gepEredmeny.setText("Computer: "+String.valueOf(gep));
                     Toast.makeText(MainActivity.this, "A nyertes a gép!", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     rock_ketto.setImageResource(R.drawable.scissors);
                     ember++;
-                    emberEredmeny.setText("Ember: "+String.valueOf(emberEredmeny));
+                    emberEredmeny.setText("Ember: "+String.valueOf(ember));
                     Toast.makeText(MainActivity.this, "A nyertes az ember!", Toast.LENGTH_SHORT).show();
                 }
+                eredmeny();
 
             }
         });
@@ -55,20 +60,21 @@ public class MainActivity extends AppCompatActivity {
                 rock.setImageResource(R.drawable.paper);
                 if(gepValasztas()==0){
                     rock_ketto.setImageResource(R.drawable.rock);
+                    ember++;
+                    emberEredmeny.setText("Ember: "+String.valueOf(ember));
+                    Toast.makeText(MainActivity.this, "A nyertes az ember!", Toast.LENGTH_SHORT).show();
                 }
                 else if(gepValasztas()==1){
                     rock_ketto.setImageResource(R.drawable.paper);
-                    gep++;
-                    gepEredmeny.setText("Computer: "+String.valueOf(gepEredmeny));
-                    Toast.makeText(MainActivity.this, "A nyertes a gép!", Toast.LENGTH_SHORT).show();
+
                 }
                 else{
                     rock_ketto.setImageResource(R.drawable.scissors);
-                    ember++;
-                    emberEredmeny.setText("Ember: "+String.valueOf(emberEredmeny));
-                    Toast.makeText(MainActivity.this, "A nyertes az ember!", Toast.LENGTH_SHORT).show();
+                    gep++;
+                    gepEredmeny.setText("Computer: "+String.valueOf(gep));
+                    Toast.makeText(MainActivity.this, "A nyertes a gép!", Toast.LENGTH_SHORT).show();
                 }
-
+                eredmeny();
             }
         });
 
@@ -78,19 +84,22 @@ public class MainActivity extends AppCompatActivity {
                 rock.setImageResource(R.drawable.scissors);
                 if(gepValasztas()==0){
                     rock_ketto.setImageResource(R.drawable.rock);
+                    gep++;
+                    gepEredmeny.setText("Computer: "+String.valueOf(gep));
+                    Toast.makeText(MainActivity.this, "A nyertes a gép!", Toast.LENGTH_SHORT).show();
                 }
                 else if(gepValasztas()==1){
                     rock_ketto.setImageResource(R.drawable.paper);
-                    gep++;
-                    gepEredmeny.setText("Computer: "+String.valueOf(gepEredmeny));
-                    Toast.makeText(MainActivity.this, "A nyertes a gép!", Toast.LENGTH_SHORT).show();
+                    ember++;
+                    emberEredmeny.setText("Ember: "+String.valueOf(ember));
+                    Toast.makeText(MainActivity.this, "A nyertes az ember!", Toast.LENGTH_SHORT).show();
+
                 }
                 else{
                     rock_ketto.setImageResource(R.drawable.scissors);
-                    ember++;
-                    emberEredmeny.setText("Ember: "+String.valueOf(emberEredmeny));
-                    Toast.makeText(MainActivity.this, "A nyertes az ember!", Toast.LENGTH_SHORT).show();
+
                 }
+                eredmeny();
             }
         });
 
@@ -101,6 +110,40 @@ public class MainActivity extends AppCompatActivity {
         return rand;
 
 
+    }
+
+    private void eredmeny(){
+        if(ember==3 || gep==3){
+            String result="";
+            if (ember>gep)
+                result="Győzelem";
+            else
+                result="Vereség";
+            jatekEredmeny=new AlertDialog.Builder(MainActivity.this);
+            jatekEredmeny.setCancelable(false)
+                    .setTitle(result)
+                    .setMessage("Új játék?")
+                    .setNegativeButton("Nem", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
+                        }
+                    })
+                    .setPositiveButton("Igen", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            ujJatek();
+                        }
+                    })
+                    .show();
+        }
+    }
+
+    private void ujJatek(){
+        ember = 0;
+        gep = 0;
+        gepEredmeny.setText("Computer: 0");
+        emberEredmeny.setText("Ember: ");
     }
 
     private void init(){

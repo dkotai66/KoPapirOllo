@@ -39,14 +39,15 @@
             android:id="@+id/rock_ketto"
             />
     </LinearLayout>
+
     <TextView
+        android:id="@+id/gepvalasztasa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/gepvalasztasa"
         android:layout_below="@id/layoutketto"
         android:gravity="center"
-        android:textSize="30dp"
-        android:text="A gép választása"/>
+        android:text="A gép választása"
+        android:textSize="30dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
